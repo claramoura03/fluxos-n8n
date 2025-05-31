@@ -1,0 +1,321 @@
+{
+  "name": "#8 - Chatbot Telegram - Curso Completo de N8N: Do Básico à Inteligência Artificial",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "1e50bb4d-d72a-4237-ab8e-0446dfc5c8f4",
+      "name": "Escuta Telegram",
+      "webhookId": "6b98ffd3-9a5a-45f2-9371-288921d3caae",
+      "credentials": {
+        "telegramApi": {
+          "id": "YABZeaeXPVDgCoLv",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.message.text }}",
+                    "rightValue": "/start",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "fbc341b7-adc7-4876-8828-4179fcac5829"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Start"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "4117dd03-594c-41f3-9e08-3c3ef9167bec",
+                    "leftValue": "={{ $json.message.text }}",
+                    "rightValue": "1",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "c7150549-9f69-40e2-8d8e-4d7544529f1d",
+                    "leftValue": "={{ $json.message.text }}",
+                    "rightValue": "2",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "6ad4a32d-4580-4118-9989-de0ce9639e1b",
+                    "leftValue": "={{ $json.message.text }}",
+                    "rightValue": "3",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": 0
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "cb5131b8-791a-433b-ad23-05146af5d8ab",
+      "name": "Menu"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Escuta Telegram').item.json.message.chat.id }}",
+        "text": "👋 Olá! Seja bem-vindo(a)!\n\nPor favor, escolha uma das opções abaixo:\n\n1️⃣ Pedir medicamentos\n2️⃣ Consultar sua fatura\n3️⃣ Sair\n\n",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        520,
+        -300
+      ],
+      "id": "fedc69a7-3e73-452d-9873-eaaae373be8a",
+      "name": "Opção Inicial (start)",
+      "webhookId": "60446fcd-88a2-4397-bfec-befaa5cd1015",
+      "credentials": {
+        "telegramApi": {
+          "id": "YABZeaeXPVDgCoLv",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Escuta Telegram').item.json.message.chat.id }}",
+        "text": "Qual medicamento você deseja?",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        520,
+        -100
+      ],
+      "id": "b4fdfe8b-5475-4c9d-a102-d5be0cd6b2dd",
+      "name": "Opção 1",
+      "webhookId": "60446fcd-88a2-4397-bfec-befaa5cd1015",
+      "credentials": {
+        "telegramApi": {
+          "id": "YABZeaeXPVDgCoLv",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Escuta Telegram').item.json.message.chat.id }}",
+        "text": "Por favor, informe seu CPF para que possamos localizar sua fatura.",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        520,
+        100
+      ],
+      "id": "4e13dcc2-6f7a-4a41-b32e-c3ba3a895764",
+      "name": "Opção 2",
+      "webhookId": "60446fcd-88a2-4397-bfec-befaa5cd1015",
+      "credentials": {
+        "telegramApi": {
+          "id": "YABZeaeXPVDgCoLv",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Escuta Telegram').item.json.message.chat.id }}",
+        "text": "Até logo! Foi um prazer ajudar você!",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        520,
+        300
+      ],
+      "id": "20130bc6-1c51-4aa6-8003-d9f392a78b8f",
+      "name": "Opção 3",
+      "webhookId": "60446fcd-88a2-4397-bfec-befaa5cd1015",
+      "credentials": {
+        "telegramApi": {
+          "id": "YABZeaeXPVDgCoLv",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Escuta Telegram": {
+      "main": [
+        [
+          {
+            "node": "Menu",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Menu": {
+      "main": [
+        [
+          {
+            "node": "Opção Inicial (start)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Opção 1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Opção 2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Opção 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "d5dd0e4a-22ef-4737-ac99-cad34d05467a",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "320070d263fbbe1b875ecd373d8a1eaad81403c9cbf3900fc1183e5605da52b0"
+  },
+  "id": "qzs4lqHaoT0zgCQt",
+  "tags": [
+    {
+      "name": "Chatbot",
+      "id": "Yh5O3UFx81RX34a0",
+      "createdAt": "2025-05-30T22:26:15.065Z",
+      "updatedAt": "2025-05-30T22:26:15.065Z"
+    },
+    {
+      "name": "Curso n8n com IA",
+      "id": "06nqprafEAQoquUm",
+      "createdAt": "2025-05-30T22:26:32.095Z",
+      "updatedAt": "2025-05-30T22:26:32.095Z"
+    },
+    {
+      "name": "Menu",
+      "id": "pFvNn3k5pzkqbTiZ",
+      "createdAt": "2025-05-30T22:26:22.466Z",
+      "updatedAt": "2025-05-30T22:26:22.466Z"
+    },
+    {
+      "name": "Telegram",
+      "id": "5zFGEM0kENg09G0y",
+      "createdAt": "2025-05-30T22:26:04.395Z",
+      "updatedAt": "2025-05-30T22:26:04.395Z"
+    }
+  ]
+}
