@@ -25,3 +25,9 @@ Este projeto foi desenvolvido como prática após assistir ao vídeo:
 [🔗 Automação com Chatbot no Telegram e n8n](https://www.youtube.com/watch?v=G_U0-UMD_9E)
 
 ![Bot funcionando](https://github.com/claramoura03/fluxos-n8n/blob/main/chatbot-telegram/bot-funcionando.png.png?raw=true)
+
+chatbot-telegram/
+├── chatbot-telegram.json         # Arquivo do fluxo exportado do n8n
+├── estrutura-do-fluxo.png.png    # Print explicando a estrutura do fluxo
+├── bot-funcionando.png.png       # Print do bot funcionando no Telegram
+└── README.md                     # Descrição específica dessa automação
