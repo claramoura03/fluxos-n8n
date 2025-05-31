@@ -1,33 +1,62 @@
 # 🤖 Chatbot Telegram com n8n
 
-Este fluxo utiliza o `Telegram Trigger` do n8n para criar um chatbot que responde a comandos como `/start`, `/ajuda` e envia mensagens automáticas com base nas opções escolhidas pelo usuário.
-
-![Fluxo do chatbot no n8n](https://github.com/claramoura03/fluxos-n8n/blob/main/chatbot-telegram/estrutura-do-fluxo.png.png?raw=true)
+Este projeto demonstra um fluxo simples no **n8n** para integração com o **Telegram**, criando um chatbot funcional que responde a comandos pré-definidos.
 
 ---
 
-## 🚀 Tecnologias
-- n8n
-- Bot do Telegram (via BotFather)
-- Webhook
+## 📌 Objetivo
 
-## 🔁 Como usar
-1. Crie seu bot no Telegram via @BotFather.
-2. Copie o token e insira no nó Telegram Trigger do n8n.
-3. Configure os comandos e mensagens no fluxo.
-4. Teste enviando `/start` no seu bot.
+Simular um chatbot funcional no Telegram, utilizando os recursos do n8n. Ideal para quem está começando a explorar automações e deseja entender como conectar o n8n a APIs externas.
 
-## 📁 Arquivo
-- `chatbot-telegram.json`
+---
 
-## 📌 Observações
-Este projeto foi desenvolvido como prática após assistir ao vídeo:  
-[🔗 Automação com Chatbot no Telegram e n8n](https://www.youtube.com/watch?v=G_U0-UMD_9E)
+## ⚙️ Tecnologias Utilizadas
 
-![Bot funcionando](https://github.com/claramoura03/fluxos-n8n/blob/main/chatbot-telegram/bot-funcionando.png.png?raw=true)
+- [n8n](https://n8n.io/) — ferramenta de automação de workflows
+- Telegram Bot API
+- Node.js (executado em servidor com n8n)
+- GitHub para versionamento
 
-chatbot-telegram/
-├── chatbot-telegram.json         # Arquivo do fluxo exportado do n8n
-├── estrutura-do-fluxo.png.png    # Print explicando a estrutura do fluxo
-├── bot-funcionando.png.png       # Print do bot funcionando no Telegram
-└── README.md                     # Descrição específica dessa automação
+---
+
+## 🧩 Estrutura do Fluxo
+
+O fluxo abaixo mostra como a automação foi estruturada dentro do n8n:
+
+![estrutura-do-fluxo](https://github.com/claramoura03/fluxos-n8n/blob/main/chatbot-telegram/estrutura-do-fluxo.png.png?raw=true)
+
+---
+
+## ✅ Bot Funcionando
+
+Este é o print de tela mostrando o bot operando com sucesso após a configuração:
+
+![bot-funcionando](https://github.com/claramoura03/fluxos-n8n/blob/main/chatbot-telegram/bot-funcionando.png.png?raw=true)
+
+---
+
+## 📂 Como usar este projeto
+
+1. Instale e configure o n8n no seu ambiente (local ou VPS).
+2. Crie um bot no Telegram e obtenha o token com o BotFather.
+3. Importe o fluxo abaixo no n8n.
+4. Atualize o nó HTTP Request com seu token do bot.
+5. Ative o fluxo e comece a interagir com o bot via Telegram.
+
+---
+
+## 📄 Fluxo JSON
+
+Você pode importar o fluxo direto no n8n usando o JSON abaixo:
+
+🔗 [chatbot-telegram.json](https://github.com/claramoura03/fluxos-n8n/blob/main/chatbot-telegram/chatbot-telegram.json)
+
+---
+
+## 🙋‍♀️ Autora
+
+Projeto desenvolvido por **Clara Moura**, como parte dos estudos em automações com n8n.  
+Se você gostou, ⭐ dê uma estrela no repositório para apoiar!
+
+---
+
