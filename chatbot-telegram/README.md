@@ -2,6 +2,8 @@
 
 Este fluxo utiliza o `Telegram Trigger` do n8n para criar um chatbot que responde a comandos como `/start`, `/ajuda` e envia mensagens automáticas com base nas opções escolhidas pelo usuário.
 
+![Fluxo do chatbot no n8n](https://github.com/claramoura03/fluxos-n8n/blob/main/chatbot-telegram/estrutura-do-fluxo.png.png?raw=true)
+
 ---
 
 ## 🚀 Tecnologias
