@@ -1,80 +1,64 @@
-# 🔍 Fluxo n8n - Busca de Endereço via ViaCEP (CEP + Logradouro)
+# 🌐 Busca de Endereço via ViaCEP (CEP + Logradouro) – n8n
 
-Este repositório contém um fluxo criado no **n8n** que realiza uma requisição à API pública do [ViaCEP](https://viacep.com.br/) para consultar endereços com base em um **CEP** e um **logradouro**.
+Este fluxo do **n8n** realiza uma consulta ao serviço **ViaCEP** com base em um CEP e logradouro informados, retornando dados completos do endereço.
 
----
-
-## 📌 Objetivo
-
-Automatizar a busca de dados de endereço no Brasil, combinando dois parâmetros:
-- **CEP**: Código de Endereçamento Postal
-- **Logradouro**: Nome da rua, avenida, etc.
-
-Esse fluxo é útil para:
-- Validar ou completar cadastros
-- Automatizar formulários
-- Enriquecer bases de dados
+Ideal para automatizações que envolvem:
+- Verificação de endereços em cadastros
+- Preenchimento automático de campos
+- Integração com sistemas externos de validação de dados
 
 ---
 
-## ⚙️ Como funciona
+## 📌 Visão Geral do Fluxo
 
-📌 O fluxo está dividido em três blocos principais:
+Este fluxo executa duas requisições HTTP para a API do [ViaCEP](https://viacep.com.br):
+- Uma busca por **CEP** diretamente
+- Outra busca por **logradouro + UF + cidade**
 
-1. **Disparo manual** (`When clicking 'Test workflow'`):  
-   Inicia o fluxo manualmente.
-
-2. **HTTP Request (GET)** – Primeira requisição:  
-   Consulta o **CEP** informado no endpoint da API do ViaCEP.
-
-3. **HTTP Request (GET)** – Segunda requisição:  
-   Consulta novamente o **CEP** para validar ou complementar com o **logradouro**.
-
----
-
-## 🧩 Estrutura do fluxo (visual)
-
-![Visualização do fluxo](https://github.com/claramoura03/fluxos-n8n/blob/main/viacep-busca-endereco/fluxo-n8n-http-request-viacep.png?raw=true)
+Retorna os seguintes dados:
+- Logradouro
+- Bairro
+- Cidade
+- UF
+- Complemento
+- IBGE
+- DDD
+- etc.
 
 ---
 
-## 📁 Arquivo incluído
+## 📂 Estrutura dos nós usados
 
-| Nome do arquivo | Descrição |
-|-----------------|-----------|
-| `Busca de endereço via ViaCEP (CEP + Logradouro).json` | Exportação do fluxo em JSON para ser importado no n8n |
-
----
-
-## 🛠️ Como importar no n8n
-
-1. Abra o **n8n**.
-2. Clique em **Import** (ícone de pasta).
-3. Selecione o arquivo `Busca de endereço via ViaCEP (CEP + Logradouro).json`.
-4. Clique em **Execute Workflow** ou use o botão **Test workflow**.
+- **Manual Trigger**: Inicia o fluxo manualmente.
+- **Set**: Define os dados de entrada (CEP, logradouro, cidade, UF).
+- **HTTP Request**: Consulta a API ViaCEP com os parâmetros definidos.
+- **Merge**: Junta as informações de diferentes chamadas (quando necessário).
+- **Function ou Set final**: Formata o resultado para exibição ou integração.
 
 ---
 
-## 📦 API utilizada
+## 🖼️ Captura de tela do fluxo
 
-- [ViaCEP - https://viacep.com.br/ws/](https://viacep.com.br/)
-  - Gratuita, pública e sem necessidade de autenticação.
-  - Limite razoável de requisições por minuto.
+![Visualização do Fluxo](https://github.com/claramoura03/fluxos-n8n/blob/main/viacep-busca-endereco/fluxo-n8n-http-request-viacep.png?raw=true)
 
 ---
 
-## 📌 Exemplo de resposta
+## 📥 Como usar
+
+1. Acesse sua instância do **n8n**.
+2. Clique em **Import** e selecione o arquivo JSON do fluxo.
+3. Altere os campos do nó `Set` para simular suas entradas (CEP ou logradouro).
+4. Clique em **Executar Fluxo** para testar.
+5. O retorno virá estruturado no painel de execução.
+
+---
+
+## 🧪 Exemplo de Entrada (no Set)
 
 ```json
 {
   "cep": "01001-000",
   "logradouro": "Praça da Sé",
-  "complemento": "lado ímpar",
-  "bairro": "Sé",
-  "localidade": "São Paulo",
-  "uf": "SP",
-  "ibge": "3550308",
-  "gia": "1004",
-  "ddd": "11",
-  "siafi": "7107"
+  "cidade": "São Paulo",
+  "uf": "SP"
 }
