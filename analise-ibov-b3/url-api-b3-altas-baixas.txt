@@ -1,0 +1,4 @@
+https://cotacao.b3.com.br/mds/api/v1/instrumentQuotation/ibov
+
+https://cotacao.b3.com.br/mds/api/v1/InstrumentPriceFluctuation/ibov
+
