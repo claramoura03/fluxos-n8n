@@ -1,0 +1,81 @@
+{
+  "name": "My workflow 7",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "block",
+        "blockId": {
+          "__rl": true,
+          "value": "https://www.notion.so/N8N-205efd97782880998716e126bd81e388",
+          "mode": "url"
+        },
+        "blockUi": {
+          "blockValues": [
+            {
+              "textContent": "Deixe seu Like e se Inscreva no canal!"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        180,
+        -20
+      ],
+      "id": "45b905be-836d-4ceb-aa3f-800f9428fdac",
+      "name": "Notion",
+      "credentials": {
+        "notionApi": {
+          "id": "xQ8IYnaImmX0RRXT",
+          "name": "Notion account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "seconds",
+              "secondsInterval": 1
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -60,
+        -20
+      ],
+      "id": "dc098ab0-79d8-4c0b-8e3c-9f4b5d695b7e",
+      "name": "Schedule Trigger"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Notion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "9e6613ec-a8eb-4428-ba43-08e5159677ec",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "320070d263fbbe1b875ecd373d8a1eaad81403c9cbf3900fc1183e5605da52b0"
+  },
+  "id": "qm6H1rlrnIH1e8t3",
+  "tags": []
+}
